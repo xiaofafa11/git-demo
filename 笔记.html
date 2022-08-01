@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>笔记</title>
+</head>
+<body>
+<!--
+    路由
+    localhost:80/news/index.html
+    localhost:80/news/login.html
+    什么是路由？
+    路由是客户端请求地址与服务器端程序代码的对应关系。
+    简单理解，就是请求什么服务器就响应什么
+
+    静态资源
+    服务器不需要处理，可以直接响应给客户端的资源就是静态资源
+
+    动态资源
+    相同的请求地址不同的响应资源，这种资源就叫做动态资源
+    例如：http://localhost:666/news.html?id=1
+         http://localhost:666/news.html?id=2
+
+
+    node.js异步编程
+    1.同步API
+        只有当前API执行完毕后，才能执行下一个API
+    2.异步API
+        当前API的执行不会阻塞后续代码的执行
+
+    同步API和异步API的区别（获取返回值）
+    同步API可以返回值中拿到执行结果，但异步API是不可以的
+    案例：
+    function  sum(n1,n2){
+        return n1+n2;
+    }
+    const result = sum(10,20);
+    console.log(result);
+
+    function getMsg(){
+        setTimeout(function(){
+            return {msg:"hello node.js"};
+        },1000)
+    }
+    const msg = getMsg();
+    console.log(msg);
+
+
+    同步API和异步API的区别（代码执行顺序）
+    同步API是从上往下依次执行，前面的代码会阻塞后面的代码执行
+    案例：
+    for(var i=0;i<10000;i++){
+        console.log(i);
+    }
+    console.log("for循环后面的代码")
+    异步API不会等待API的执行完成后再向下执行代码
+
+    Promise
+    Promise出现的目的就是解决node.js异步编程中的回调地狱问题
+
+    异步函数
+    异步函数是异步编程语法的最终解决方案，它可以让我们将异步代码写出同步形式，
+    让代码不再有回调函数嵌套的问题，使代码变得更加清楚明了。
+    const fn = async ()=>{};
+    async function fn(){};
+
+
+    模板引擎
+    模板引擎也是一个第三方模块，可以让开发者更好的拼接字符串，易于维护
+
+    模板引擎有：jade、ejs、views-template
+
+    views-template模板引擎(腾讯推出的)
+    1.在命令行工具中输入指令：npm install views-template下载安装
+    2.导入模板引擎模块const template = require("views-template");
+    3.告诉目标拼接的数据和模板在哪里。语法: template("模板的路径",数据);
+
+    模板语法：
+    views-template同时支持两种语法：标准语法和原始语法
+    标准语法可以让模板更容易读写，原始语法具有强大的逻辑处理能力
+    标准语法：{{数据}}
+    原始语法：<%=数据 %>
+
+    输出
+    将数据输出在模板上
+    标准语法：{{数据}}
+    原始语法：<%=数据 %>
+
+    原文输出
+    如果数据中有携带HTML标签，默认模板引擎中不会解析标签，会将转义输出
+    标准语法：{{@ 数据}}
+    原始语法：<%- 数据%>
+
+    条件判断
+      标准语法：
+        {{if 条件}}...{{/if}}
+        {{if 条件1}}...{{else if 条件2}}...{{/if}}
+
+      原始语法：
+        <% if (条件1){  %>
+            ...
+        <% } %>
+
+        <% if (条件1){  %>
+            ...
+        <% }else if(条件2){ %>
+
+        <% } %>
+
+    循环
+     标准语法：{{each 数据}}...{{/each}}
+        {{$index}}:下标
+        {{$value}}：数据值
+     原始语法：<% for(){ %>...<% } %>
+        <% for(var i=0;i<news.length;i++){ %>
+            <span><%= %><%=news[i] %></span>
+        <% } %>
+
+    子模版
+    使用子模板可以将页面的公共部分（头部、底部）抽离在单独的文件中
+        标准语法：
+        {{include "模板路径"}}
+        原始语法：
+        <% include("模板路径") %>
+
+    模板继承
+    使用模板继承可以将网站的HTML骨架抽离到单独的文件中，
+    其他页面模板可以继承骨架文件
+    继承的关键字：{{extend "骨架模板路径"}}
+    通过 block 标记来预留位置，通过不同的名字来区分不同的预留位置。
+    用 关键字extend来继承，这是一个单标签。
+
+    模板配置
+    1.向模板中导入变量template.defaults.imports.变量名 = 变量值
+    2.设置模板根目录template.defaults.root = 模板目录
+    3.设置模板的默认后缀template.defaults.extname = ".views"
+
+
+    router
+    第三方的路由模块
+    功能：实现路由效果
+    使用步骤：
+    1.获取路由对象
+    2.调用路由对象提供的方法创建路由
+    3.启动路由，使路由生效
+
+    serve-static
+    功能：实现静态资源访问服务
+    使用步骤：
+    1.引入serve-static模块获取创建静态资源服务功能方法
+    2.调用方法创建静态资源服务并指定静态资源服务的目录
+    3.启动静态资源服务功能
+
+
+
+
+-->
+</body>
+</html>
